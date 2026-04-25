@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import my.edu.utar.mobileappass.R;
 
 public class SavingsGoalActivity extends AppCompatActivity {
 

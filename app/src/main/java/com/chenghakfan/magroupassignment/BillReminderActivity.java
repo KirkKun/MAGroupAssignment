@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import my.edu.utar.mobileappass.R;
 
 public class BillReminderActivity extends AppCompatActivity implements BillReminderAdapter.OnBillActionListener {
 

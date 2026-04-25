@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+
+import my.edu.utar.mobileappass.R;
 
 public class ChatbotActivity extends AppCompatActivity {
 

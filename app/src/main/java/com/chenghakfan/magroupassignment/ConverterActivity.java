@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import my.edu.utar.mobileappass.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

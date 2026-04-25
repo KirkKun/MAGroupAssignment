@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import my.edu.utar.mobileappass.R;
 
 public class FeedbackActivity extends AppCompatActivity {
 
