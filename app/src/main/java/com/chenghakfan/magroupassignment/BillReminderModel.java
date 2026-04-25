@@ -5,7 +5,7 @@ public class BillReminderModel {
     private String title;
     private double amount;
     private String dueDate;
-    private int status; // 0 for unpaid, 1 for paid
+    private int status;
 
     public BillReminderModel(int id, String title, double amount, String dueDate, int status) {
         this.id = id;
