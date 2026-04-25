@@ -76,17 +76,14 @@ public class WalletActivity extends AppCompatActivity {
         double totalIncome = db.getTotalIncome();
         double totalExpense = db.getTotalExpenses();
 
-        // Calculate Savings Goals Total
         double goalsTotal = 0;
         ArrayList<SavingsGoalModel> goals = db.getAllSavingsGoals();
         for (SavingsGoalModel goal : goals) {
             goalsTotal += goal.getCurrentAmount();
         }
 
-        // Manual Assets Total
         double manualAssetsTotal = db.getTotalAssetsValue();
 
-        // Calculate unpaid bills as Debt
         double debt = 0;
 
         double currentBalance = totalIncome - totalExpense;
