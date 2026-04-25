@@ -22,6 +22,8 @@ public class SetBudgetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Based on activity_set_budget.xml, it seems the layout was actually activity_wallet.xml or similar.
+        // I will fix activity_set_budget.xml first then this activity.
         setContentView(R.layout.activity_set_budget);
 
         db = new DatabaseHelper(this);
@@ -31,37 +33,40 @@ public class SetBudgetActivity extends AppCompatActivity {
         btnSaveBudget = findViewById(R.id.btnSaveBudget);
         btnBack = findViewById(R.id.btnBack);
 
-        Calendar calendar = Calendar.getInstance();
-        etMonth.setText(String.format(Locale.getDefault(), "%04d-%02d",
-                calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1));
+        if (etMonth != null) {
+            Calendar calendar = Calendar.getInstance();
+            etMonth.setText(String.format(Locale.getDefault(), "%04d-%02d",
+                    calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1));
+            etMonth.setOnClickListener(v -> showMonthPicker());
+        }
 
-        etMonth.setOnClickListener(v -> showMonthPicker());
+        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
 
-        btnBack.setOnClickListener(v -> finish());
+        if (btnSaveBudget != null) {
+            btnSaveBudget.setOnClickListener(v -> {
+                String month = etMonth.getText().toString().trim();
+                String amountText = etAmount.getText().toString().trim();
 
-        btnSaveBudget.setOnClickListener(v -> {
-            String month = etMonth.getText().toString().trim();
-            String amountText = etAmount.getText().toString().trim();
-
-            if (month.isEmpty() || amountText.isEmpty()) {
-                Toast.makeText(this, "Please enter month and amount", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            try {
-                double amount = Double.parseDouble(amountText);
-                boolean success = db.setMonthlyBudget(month, amount);
-
-                if (success) {
-                    Toast.makeText(this, "Budget saved for " + month, Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(this, "Failed to save budget", Toast.LENGTH_SHORT).show();
+                if (month.isEmpty() || amountText.isEmpty()) {
+                    Toast.makeText(this, "Please enter month and amount", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-            } catch (NumberFormatException e) {
-                Toast.makeText(this, "Invalid amount", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+                try {
+                    double amount = Double.parseDouble(amountText);
+                    boolean success = db.setMonthlyBudget(month, amount);
+
+                    if (success) {
+                        Toast.makeText(this, "Budget saved for " + month, Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Failed to save budget", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Invalid amount", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void showMonthPicker() {

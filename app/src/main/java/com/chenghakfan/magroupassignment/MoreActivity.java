@@ -30,8 +30,8 @@ public class MoreActivity extends AppCompatActivity {
         navMore = findViewById(R.id.navMore);
 
         if (btnChatbot != null) btnChatbot.setOnClickListener(v -> startActivity(new Intent(this, ChatbotActivity.class)));
-        if (btnFeedback != null) btnFeedback.setOnClickListener(v -> startActivity(new Intent(this, my.edu.utar.mobileappass.FeedbackActivity.class)));
-        if (btnConverter != null) btnConverter.setOnClickListener(v -> startActivity(new Intent(this, my.edu.utar.mobileappass.ConverterActivity.class)));
+        if (btnFeedback != null) btnFeedback.setOnClickListener(v -> startActivity(new Intent(this, FeedbackActivity.class)));
+        if (btnConverter != null) btnConverter.setOnClickListener(v -> startActivity(new Intent(this, ConverterActivity.class)));
         if (btnSetBudget != null) btnSetBudget.setOnClickListener(v -> startActivity(new Intent(this, SetBudgetActivity.class)));
         if (btnSavingsGoals != null) btnSavingsGoals.setOnClickListener(v -> startActivity(new Intent(this, SavingsGoalActivity.class)));
         if (btnBillReminders != null) btnBillReminders.setOnClickListener(v -> startActivity(new Intent(this, BillReminderActivity.class)));

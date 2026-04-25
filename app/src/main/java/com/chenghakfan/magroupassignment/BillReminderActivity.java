@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
