@@ -55,7 +55,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "value REAL, " +
                 "type TEXT)");
 
-        // Insert default categories
         String[] defaultCategories = {"Food", "Transport", "Entertainment", "Education", "Health", "Others"};
         for (String cat : defaultCategories) {
             db.execSQL("INSERT OR IGNORE INTO categories (name) VALUES ('" + cat + "')");
@@ -94,8 +93,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "type TEXT)");
         }
     }
-
-    // --- Transactions ---
 
     public boolean addTransaction(String title, String category, double amount, String date, String type) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -137,8 +134,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    // --- Budget ---
-
     public boolean setMonthlyBudget(String month, double amount) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -163,8 +158,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return amount;
     }
-
-    // --- Statistics ---
 
     public double getTotalIncome() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -228,8 +221,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    // --- Categories ---
-
     public ArrayList<String> getCategories() {
         ArrayList<String> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -245,8 +236,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("name", name);
         return db.insert("categories", null, cv) != -1;
     }
-
-    // --- Savings Goals ---
 
     public boolean addSavingsGoal(String title, double target) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -296,8 +285,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    // --- Bill Reminders ---
-
     public boolean addBillReminder(String title, double amount, String dueDate) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -325,8 +312,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM bill_reminders ORDER BY due_date ASC", null);
     }
-
-    // --- Assets ---
 
     public boolean addAsset(String name, double value, String type) {
         SQLiteDatabase db = this.getWritableDatabase();

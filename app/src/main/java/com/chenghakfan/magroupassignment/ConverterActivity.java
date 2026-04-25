@@ -49,20 +49,16 @@ public class ConverterActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        // Setup Spinners
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencies);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSourceCurrency.setAdapter(adapter);
         spinnerTargetCurrency.setAdapter(adapter);
 
-        // Default selection
         spinnerSourceCurrency.setSelection(0); // MYR
         spinnerTargetCurrency.setSelection(1); // USD
 
-        // Fetch rates initially
         fetchRates();
 
-        // Real-time update
         etSourceAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -103,7 +99,6 @@ public class ConverterActivity extends AppCompatActivity {
     private void fetchRates() {
         String base = spinnerSourceCurrency.getSelectedItem().toString();
 
-        // Update to use the reliable V6 public endpoint
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://open.er-api.com/")
                 .addConverterFactory(GsonConverterFactory.create())

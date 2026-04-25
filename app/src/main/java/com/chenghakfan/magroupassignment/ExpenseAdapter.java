@@ -54,7 +54,6 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
 
         String category = model.getCategory();
 
-        // Icon logic
         if (category.equalsIgnoreCase("Food")) {
             holder.imgIcon.setImageResource(R.drawable.restaurant);
         } else if (category.equalsIgnoreCase("Transport")) {
@@ -69,7 +68,6 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
             holder.imgIcon.setImageResource(R.drawable.application);
         }
 
-        // Long click to Delete
         holder.itemView.setOnLongClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Delete Transaction")
@@ -87,7 +85,6 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
             return true;
         });
 
-        // Click to Update (Reuses AddExpenseActivity with intent extras)
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, AddExpenseActivity.class);
             intent.putExtra("id", model.getId());

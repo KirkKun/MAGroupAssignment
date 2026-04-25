@@ -17,7 +17,6 @@ public class MoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
 
-        // Grid Items
         btnChatbot = findViewById(R.id.btnChatbot);
         btnFeedback = findViewById(R.id.btnFeedback);
         btnConverter = findViewById(R.id.btnConverter);
@@ -25,13 +24,11 @@ public class MoreActivity extends AppCompatActivity {
         btnSavingsGoals = findViewById(R.id.btnSavingsGoals);
         btnBillReminders = findViewById(R.id.btnBillReminders);
 
-        // Bottom Nav
         navHome = findViewById(R.id.navHome);
         navWallet = findViewById(R.id.navWallet);
         navCharts = findViewById(R.id.navCharts);
         navMore = findViewById(R.id.navMore);
 
-        // Feature Listeners
         if (btnChatbot != null) btnChatbot.setOnClickListener(v -> startActivity(new Intent(this, ChatbotActivity.class)));
         if (btnFeedback != null) btnFeedback.setOnClickListener(v -> startActivity(new Intent(this, my.edu.utar.mobileappass.FeedbackActivity.class)));
         if (btnConverter != null) btnConverter.setOnClickListener(v -> startActivity(new Intent(this, my.edu.utar.mobileappass.ConverterActivity.class)));
@@ -39,7 +36,6 @@ public class MoreActivity extends AppCompatActivity {
         if (btnSavingsGoals != null) btnSavingsGoals.setOnClickListener(v -> startActivity(new Intent(this, SavingsGoalActivity.class)));
         if (btnBillReminders != null) btnBillReminders.setOnClickListener(v -> startActivity(new Intent(this, BillReminderActivity.class)));
 
-        // Bottom Navigation Listeners
         navHome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
         navWallet.setOnClickListener(v -> startActivity(new Intent(this, WalletActivity.class)));
         navCharts.setOnClickListener(v -> startActivity(new Intent(this, ChartsActivity.class)));

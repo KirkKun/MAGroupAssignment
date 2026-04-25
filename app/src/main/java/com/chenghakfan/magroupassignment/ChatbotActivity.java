@@ -47,7 +47,6 @@ public class ChatbotActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        // Initial AI Greeting
         addAiMessage("👋 Hello! I'm your AI Financial Assistant.\n\nI can help you track your budget, analyze your spending, and provide personalized saving advice. What would you like to know?");
 
         btnSend.setOnClickListener(v -> sendMessage());

@@ -59,7 +59,6 @@ public class AddExpenseActivity extends AppCompatActivity {
             etDate.setText(getIntent().getStringExtra("date"));
             btnSave.setText("Update Transaction");
 
-            // Set spinner selections (simplified)
             String type = getIntent().getStringExtra("type");
             if (type != null && type.equalsIgnoreCase("income")) {
                 spinnerType.setSelection(0);

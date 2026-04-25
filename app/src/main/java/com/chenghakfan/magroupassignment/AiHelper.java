@@ -87,9 +87,8 @@ public class AiHelper {
 
         if (budget <= 0 && expenses <= 0 && income <= 0) return 0;
 
-        int score = 70; // Baseline
+        int score = 70;
 
-        // 1. Budget Compliance
         if (budget > 0) {
             double usage = (expenses / budget) * 100;
             if (usage > 100) score -= 30;
@@ -97,7 +96,6 @@ public class AiHelper {
             else if (usage < 50) score += 10;
         }
 
-        // 2. Savings Rate
         if (income > 0) {
             double savingsRate = ((income - expenses) / income) * 100;
             if (savingsRate >= 20) score += 20;
@@ -134,7 +132,7 @@ public class AiHelper {
                         .append(" (RM").append(String.format("%.2f", cursor.getDouble(2))).append(") ")
                         .append("due on ").append(cursor.getString(3)).append("\n");
                 count++;
-                if (count >= 5) break; // Limit to 5
+                if (count >= 5) break;
             } while (cursor.moveToNext());
         }
         cursor.close();

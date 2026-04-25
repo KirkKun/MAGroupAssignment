@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseHelper db;
 
     private int selectedYear;
-    private int selectedMonth; // 0 to 11
+    private int selectedMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
