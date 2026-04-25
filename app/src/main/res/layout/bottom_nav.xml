@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:orientation="horizontal"
+    android:background="#D9E9FA"
+    android:gravity="center"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_weight="1"
+        android:src="@drawable/home"
+        android:padding="10dp"
+        android:contentDescription="Home" />
+
+    <ImageView
+        android:id="@+id/navWallet"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_weight="1"
+        android:src="@drawable/wallet"
+        android:padding="10dp"
+        android:contentDescription="Wallet" />
+
+    <ImageView
+        android:id="@+id/navCharts"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_weight="1"
+        android:src="@drawable/pie_chart__1_"
+        android:padding="10dp"
+        android:contentDescription="Charts" />
+
+    <ImageView
+        android:id="@+id/navMore"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_weight="1"
+        android:src="@drawable/menu"
+        android:padding="10dp"
+        android:contentDescription="More" />
+</LinearLayout>
