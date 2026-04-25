@@ -27,7 +27,7 @@ public class ChartsActivity extends AppCompatActivity {
     DatabaseHelper db;
 
     int selectedYear;
-    int selectedMonth; // 0 - 11
+    int selectedMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
