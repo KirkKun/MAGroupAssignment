@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import my.edu.utar.mobileappass.R;
+
 public class SavingsGoalActivity extends AppCompatActivity {
 
     private DatabaseHelper db;

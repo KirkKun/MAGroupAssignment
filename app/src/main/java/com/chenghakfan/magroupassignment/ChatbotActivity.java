@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import my.edu.utar.mobileappass.R;
+
 public class ChatbotActivity extends AppCompatActivity {
 
     private RecyclerView recyclerChat;

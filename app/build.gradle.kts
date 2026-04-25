@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.chenghakfan.magroupassignment"
-    compileSdk = 36
+    namespace = "my.edu.utar.mobileappass"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.chenghakfan.magroupassignment"
+        applicationId = "my.edu.utar.mobileappass"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

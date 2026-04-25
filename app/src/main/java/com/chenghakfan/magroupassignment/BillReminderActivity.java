@@ -20,6 +20,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import my.edu.utar.mobileappass.R;
+
 public class BillReminderActivity extends AppCompatActivity implements BillReminderAdapter.OnBillActionListener {
 
     private DatabaseHelper db;
