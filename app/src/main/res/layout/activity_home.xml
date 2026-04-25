@@ -126,7 +126,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Financial Health Score Card -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,7 +169,6 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Budget Progress Card -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
