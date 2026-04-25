@@ -7,8 +7,6 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import my.edu.utar.mobileappass.R;
-
 public class MoreActivity extends AppCompatActivity {
 
     LinearLayout btnChatbot, btnFeedback, btnConverter, btnSetBudget, btnSavingsGoals, btnBillReminders;

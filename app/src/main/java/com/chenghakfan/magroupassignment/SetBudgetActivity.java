@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 import java.util.Locale;
 
+// Explicitly import the R class to resolve symbols
+import com.chenghakfan.magroupassignment.R;
+
 public class SetBudgetActivity extends AppCompatActivity {
 
     EditText etMonth, etAmount;
@@ -22,8 +25,6 @@ public class SetBudgetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Based on activity_set_budget.xml, it seems the layout was actually activity_wallet.xml or similar.
-        // I will fix activity_set_budget.xml first then this activity.
         setContentView(R.layout.activity_set_budget);
 
         db = new DatabaseHelper(this);

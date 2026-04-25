@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import my.edu.utar.mobileappass.R;
-
 public class FeedbackActivity extends AppCompatActivity {
 
     @Override
