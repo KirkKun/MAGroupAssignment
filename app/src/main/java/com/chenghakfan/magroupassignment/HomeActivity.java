@@ -1,4 +1,4 @@
-package my.edu.utar.mobileappass;
+package com.chenghakfan.magroupassignment;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -77,13 +77,13 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         navWallet.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, WalletActivity.class)));
+                startActivity(new Intent(com.chenghakfan.magroupassignment.HomeActivity.this, WalletActivity.class)));
 
         navCharts.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, ChartsActivity.class)));
+                startActivity(new Intent(com.chenghakfan.magroupassignment.HomeActivity.this, ChartsActivity.class)));
 
         navMore.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, MoreActivity.class)));
+                startActivity(new Intent(com.chenghakfan.magroupassignment.HomeActivity.this, MoreActivity.class)));
     }
 
     @Override
