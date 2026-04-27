@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "financial_wellness.db";
-    private static final int DB_VERSION = 5;
+    private static final int DB_VERSION = 6;
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -55,6 +55,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "value REAL, " +
                 "type TEXT)");
 
+        db.execSQL("CREATE TABLE debts (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "title TEXT, " +
+                "total_amount REAL, " +
+                "amount_paid REAL)");
+
         String[] defaultCategories = {"Food", "Transport", "Entertainment", "Education", "Health", "Others"};
         for (String cat : defaultCategories) {
             db.execSQL("INSERT OR IGNORE INTO categories (name) VALUES ('" + cat + "')");
@@ -91,6 +97,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "name TEXT, " +
                     "value REAL, " +
                     "type TEXT)");
+        }
+        if (oldVersion < 6) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS debts (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "title TEXT, " +
+                    "total_amount REAL, " +
+                    "amount_paid REAL)");
         }
     }
 
@@ -329,5 +342,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) res = cursor.getDouble(0);
         cursor.close();
         return res;
+    }
+
+    public boolean addDebt(String title, double totalAmount) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("title", title);
+        cv.put("total_amount", totalAmount);
+        cv.put("amount_paid", 0);
+        return db.insert("debts", null, cv) != -1;
+    }
+
+    public boolean updateDebtProgress(int id, double amountPaid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("amount_paid", amountPaid);
+        return db.update("debts", cv, "id=?", new String[]{String.valueOf(id)}) > 0;
+    }
+
+    public boolean deleteDebt(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("debts", "id=?", new String[]{String.valueOf(id)}) > 0;
+    }
+
+    public ArrayList<DebtModel> getAllDebts() {
+        ArrayList<DebtModel> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM debts", null);
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(new DebtModel(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getDouble(2),
+                        cursor.getDouble(3)
+                ));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
     }
 }

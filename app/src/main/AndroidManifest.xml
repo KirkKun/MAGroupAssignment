@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <activity android:name=".DebtTrackerActivity" />
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".ConverterActivity" />
         <activity android:name=".SavingsGoalActivity" />

@@ -76,20 +76,30 @@ public class BillReminderActivity extends AppCompatActivity implements BillRemin
 
     private void checkOverdueBills() {
         String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        StringBuilder overdueBills = new StringBuilder();
+        ArrayList<BillReminderModel> overdueList = new ArrayList<>();
 
         for (BillReminderModel bill : billList) {
-            if (bill.getDueDate().compareTo(today) <= 0) {
-                if (overdueBills.length() > 0) overdueBills.append("\n");
-                overdueBills.append("• ").append(bill.getTitle()).append(" (RM").append(String.format("%.2f", bill.getAmount())).append(")");
+            if (bill.getStatus() == 0 && bill.getDueDate().compareTo(today) < 0) {
+                overdueList.add(bill);
             }
         }
 
-        if (overdueBills.length() > 0) {
+        if (!overdueList.isEmpty()) {
+            StringBuilder message = new StringBuilder("The following bills are overdue and have been added to your Debt Tracker:\n\n");
+            for (BillReminderModel b : overdueList) {
+                message.append("• ").append(b.getTitle()).append(" (RM").append(String.format(Locale.getDefault(), "%.2f", b.getAmount())).append(")\n");
+                
+                // Add to Debt Tracker
+                db.addDebt("[OVERDUE] " + b.getTitle(), b.getAmount());
+                
+                // Mark as 'processed' or delete to avoid duplicate debt entries
+                db.deleteBillReminder(b.getId());
+            }
+
             new AlertDialog.Builder(this)
-                    .setTitle("Upcoming/Overdue Bills 🔔")
-                    .setMessage("You have bills due:\n\n" + overdueBills.toString())
-                    .setPositiveButton("Got it", null)
+                    .setTitle("Overdue Bills Detected! 💸")
+                    .setMessage(message.toString())
+                    .setPositiveButton("I'll pay them soon", (dialog, which) -> loadBills())
                     .show();
         }
     }

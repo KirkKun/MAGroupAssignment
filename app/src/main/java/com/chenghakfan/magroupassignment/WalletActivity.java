@@ -28,7 +28,7 @@ public class WalletActivity extends AppCompatActivity {
     TextView tvNetWorth, tvAssets, tvDebt, tvAccountBalance, tvUSD, tvGoalsTotal, tvManualAssets;
     Button btnSetBudget, btnAddExpense;
     ImageView navHome, navWallet, navCharts, navMore;
-    LinearLayout layoutAssets;
+    LinearLayout layoutAssets, layoutDebt;
     DatabaseHelper db;
 
     @Override
@@ -47,6 +47,7 @@ public class WalletActivity extends AppCompatActivity {
         tvManualAssets = findViewById(R.id.tvManualAssets);
 
         layoutAssets = findViewById(R.id.layoutAssets);
+        layoutDebt = findViewById(R.id.layoutDebt);
 
         btnSetBudget = findViewById(R.id.btnSetBudget);
         btnAddExpense = findViewById(R.id.btnAddExpense);
@@ -60,6 +61,7 @@ public class WalletActivity extends AppCompatActivity {
         btnAddExpense.setOnClickListener(v -> startActivity(new Intent(this, AddExpenseActivity.class)));
 
         layoutAssets.setOnClickListener(v -> showAddAssetDialog());
+        layoutDebt.setOnClickListener(v -> startActivity(new Intent(this, DebtTrackerActivity.class)));
 
         navHome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
         navCharts.setOnClickListener(v -> startActivity(new Intent(this, ChartsActivity.class)));
@@ -85,6 +87,10 @@ public class WalletActivity extends AppCompatActivity {
         double manualAssetsTotal = db.getTotalAssetsValue();
 
         double debt = 0;
+        ArrayList<DebtModel> debtsList = db.getAllDebts();
+        for (DebtModel d : debtsList) {
+            debt += (d.getTotalAmount() - d.getAmountPaid());
+        }
 
         double currentBalance = totalIncome - totalExpense;
         double totalAssets = currentBalance + goalsTotal + manualAssetsTotal;
@@ -105,7 +111,7 @@ public class WalletActivity extends AppCompatActivity {
         builder.setTitle("Add New Asset");
         builder.setMessage("Enter manual asset value (e.g. Property, Stock, Gold)");
 
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_add_goal, null); // Reuse the same layout for simplicity
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_add_goal, null);
         EditText etName = view.findViewById(R.id.etGoalTitle);
         etName.setHint("Asset Name (e.g. Stock Investment)");
         EditText etValue = view.findViewById(R.id.etGoalTarget);
